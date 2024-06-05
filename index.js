@@ -2,12 +2,16 @@ const express= require('express') ;
 const articleRouter=require('./routes/articles');
 const Article = require('./models/article');
 const mongoose = require('mongoose');
+const dotenv = require("dotenv");
 const methodOverride = require('method-override');
 
-const app = express();
-const port = 3000;
 
-mongoose.connect(`mongodb+srv://sridhareswar3:sri2003.com@cluster0.dy7wvq9.mongodb.net/blog`, {
+const app = express();
+dotenv.config();
+const port = process.env.PORT || 3000;
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.dy7wvq9.mongodb.net/blog`, {
     // Remove the useNewUrlParser and useUnifiedTopology options
 });
 
